@@ -17,6 +17,7 @@ class ChartsTester extends React.Component {
 
     render() {
         let data = []
+        //Need some better way to generate colors programmatically
         this.state.users.forEach(e => data.push(
           {
             name: e.name,

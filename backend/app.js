@@ -4,10 +4,12 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var cors = require("cors");
+const {pool} = require('./config')
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var testAPIRouter = require('./routes/testAPI');
+var booksRouter = require('./routes/books') //Add the link to the books router
 
 var app = express();
 
@@ -24,7 +26,22 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use("/testAPI", testAPIRouter);
+app.use('/testAPI', testAPIRouter);
+app.use('/books', booksRouter) //Attach the books route to the app
+
+const getBooks = (request, response) => {
+  pool.query('SELECT * FROM books', (error, results) => {
+    if (error) {
+      throw error
+    }
+    response.status(200).json(results.rows)
+  })
+}
+
+app
+  .route('/booksSpecial')
+  // GET endpoint
+  .get(getBooks)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
