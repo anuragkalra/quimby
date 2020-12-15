@@ -55,12 +55,27 @@ const addBook = (request, response) => {
   )
 }
 
+const deleteBook = (request, response) => {
+  const id = parseInt(request.query.id) //request.params is deprecated
+  
+  pool.query('DELETE FROM books WHERE id = $1', [id], (error, results) => {
+  //pool.query('DELETE FROM books WHERE id = 2', (error, results) => {  
+    if (error) {
+      throw error
+    }
+    response.status(200).send(`Book deleted with ID: ${id}`)
+    //response.status(200).send(`Book deleted with ID: 2`)
+  })
+}
+
 app
   .route('/booksSpecial')
   // GET endpoint
   .get(getBooks)
   // POST endpoint
   .post(addBook)
+  // DELETE endpoint
+  .delete(deleteBook)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
