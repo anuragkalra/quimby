@@ -1,6 +1,7 @@
 import './App.scss';
 //import RecordsTester from './RecordsTester';
-import ChartsTester from './ChartsTester';
+//import ChartsTester from './ChartsTester';
+import ParticipationManager from './ParticipationManager';
 
 import {Foo, Bar} from './utils';
 
@@ -13,7 +14,10 @@ function App() {
         <h1>Employee Participation App</h1>
       </header>
       <section>
-        <ChartsTester />
+        <ParticipationManager />
+      </section>
+      <section>
+        {/* <ChartsTester /> */}
       </section>
       <section>
         {/* <RecordsTester /> */}
