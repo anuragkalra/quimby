@@ -20,6 +20,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //GET /participants
 const getParticipants = (request, response) => {
+  //TODO FIX
+ // pool.query('SELECT UPPER(first_name), UPPER(last_name), SUM(hours) FROM participants GROUP', (error, results) => {
   pool.query('SELECT * FROM participants', (error, results) => {
     if (error) {
       throw error
