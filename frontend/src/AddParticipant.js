@@ -75,12 +75,7 @@ class AddParticipant extends React.Component {
         return (
             <div>
                 <h1>Add Participant</h1>
-                {/* <form onSubmit={this.handleSubmit}> */}
                 <form onSubmit={this.handleSubmit}>
-                    {/* <label>
-                    Tester:
-                        <input type="text" value={this.props.tester} onChange={this.handleTesterChange} />
-                    </label> */}
                     <label>
                     First Name:
                         <input type="text" value={this.props.firstName} onChange={this.handleFirstNameChange} />
@@ -93,15 +88,6 @@ class AddParticipant extends React.Component {
                     Hours:
                         <input type="text" value={this.props.hours} onChange={this.handleHoursChange}/>    
                     </label>
-                    {/* <label>
-                    Last Name:
-                        <input type="text" value={this.state.value} onChange={this.handleChangeLastName} />
-                    </label>
-                    <label>
-                    Hours:
-                        <input type="text" value={this.state.value} onChange={this.handleChangeHours} />
-                    </label> */}
-                    {/* <input type="submit" value="Submit" /> */}
                     <button type="submit" onClick={this.handleSubmit}>Submit</button>
                 </form>
             </div>

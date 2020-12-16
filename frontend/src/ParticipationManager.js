@@ -10,19 +10,12 @@ class ParticipationManager extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            //tester: '',
             firstName: '',
             lastName: '',
             hours: 0,
-            //users : [],
             counter : 0
-            //madeRequest: false
         }
     }
-
-    // testerChanged = (val) => {
-    //     this.setState({tester : val})
-    // }
 
     firstNameChange = (val) => {
         this.setState({firstName : val})
@@ -37,12 +30,14 @@ class ParticipationManager extends React.Component {
     }
 
     submitParticipant = (e) => {
-        //e.preventDefault();
-        if (this.state.hours == 0) {
-            alert('Hours must be greater than 0')
+        if (isNaN(this.state.hours)) {
+            alert('hours must be a number')
             return
         }
-        //console.log(this.state)
+        if (this.state.hours <= 0) {
+            alert('Hours must be greater than zero')
+            return
+        }
         let url = 'http://localhost:9000/participants'
         let data = {
             firstName : this.state.firstName,
@@ -54,13 +49,11 @@ class ParticipationManager extends React.Component {
             .then(e=>console.log(e))
 
         this.setState({
-            //tester: '',
             firstName: '',
             lastName: '',
             hours: 0,
             counter: this.state.counter + 1
         })
-        //e.preventDefault();
     }
 
     render() {
@@ -68,8 +61,6 @@ class ParticipationManager extends React.Component {
             <div>
                 <h1>Participation Manager</h1>
                 <AddParticipant 
-                    // tester={this.state.tester}
-                    // onTesterChange={this.testerChanged}
                     firstName={this.state.firstName}
                     onFirstNameChange={this.firstNameChange}
                     lastName={this.state.lastName}
@@ -82,8 +73,6 @@ class ParticipationManager extends React.Component {
                 <ParticipantLog
                     counter={this.state.counter}
                 />
-
-                {/* <OrderComponent /> */}
             </div>
         );
     }

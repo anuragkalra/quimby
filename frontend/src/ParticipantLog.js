@@ -6,7 +6,6 @@ class ParticipantLog extends React.Component {
         this.state = {
             users : [],
         }
-        //this.handleDelete = this.handleDelete.bind(this)
     }
 
     componentDidMount() {
@@ -27,13 +26,11 @@ class ParticipantLog extends React.Component {
 
     handleDelete(id) {
         console.log(id)
-        //console.log('handleDelete')
         let url = 'http://localhost:9000/participants?id=' + id
         console.log(url)
         fetch(url, {
             method : 'DELETE'
         })
-        //fetch('http://localhost:9000/participants')
     }
 
     render() {
