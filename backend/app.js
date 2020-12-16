@@ -30,10 +30,12 @@ const getParticipants = (request, response) => {
 
 //POST /participants
 const addParticipant = (request, response) => {
-  const {first_name, last_name, hours} = request.body
+  //const {first_name, last_name, hours} = request.body
+  const {firstName, lastName, hours} = request.body
   pool.query(
     'INSERT INTO participants (first_name, last_name, hours) VALUES ($1, $2, $3)',
-    [first_name, last_name, hours],
+    //[first_name, last_name, hours],
+    [firstName, lastName, hours],
     (error) => {
       if (error) {
         throw error

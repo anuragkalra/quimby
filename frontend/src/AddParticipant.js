@@ -5,21 +5,21 @@ class AddParticipant extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            name: '',
+            firstName: '',
             lastName: '',
             hours: 0,
         };
 
-        this.handleChangeName = this.handleChangeName.bind(this);
+        this.handleChangeFirstName = this.handleChangeFirstName.bind(this);
         this.handleChangeLastName = this.handleChangeLastName.bind(this);
         this.handleChangeHours = this.handleChangeHours.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
     
     //TODO: Can refactor this to work with change on multiple inputs
-    handleChangeName(event) {
+    handleChangeFirstName(event) {
         this.setState({
-            name: event.target.value, 
+            firstName: event.target.value, 
         });
     }
 
@@ -36,16 +36,16 @@ class AddParticipant extends React.Component {
     }
 
     handleSubmit(event) {
-        console.log("Name:", this.state.name, ", Last Name:", this.state.lastName,  ", Hours:", this.state.hours)
-        // let url = 'http://localhost:9000/testAPI'
-        // let data = {
-        //     name : this.state.name,
-        //     lastName : this.state.lastName,
-        //     hours : this.state.hours
-        // }
-        // axios.post(url, data)
-        //   .then(res=>console.log(res))
-        //   .catch(e=>console.log(e))
+        console.log("First Name:", this.state.firstName, ", Last Name:", this.state.lastName,  ", Hours:", this.state.hours)
+        let url = 'http://localhost:9000/participants'
+        let data = {
+            firstName : this.state.firstName,
+            lastName : this.state.lastName,
+            hours : this.state.hours
+        }
+        axios.post(url, data)
+          .then(res=>console.log(res))
+          .catch(e=>console.log(e))
 
         event.preventDefault();
     }
@@ -56,8 +56,8 @@ class AddParticipant extends React.Component {
                 <h1>Add Participant</h1>
                 <form onSubmit={this.handleSubmit}>
                     <label>
-                    Name:
-                        <input type="text" value={this.state.value} onChange={this.handleChangeName} />
+                    First Name:
+                        <input type="text" value={this.state.value} onChange={this.handleChangeFirstName} />
                     </label>
                     <label>
                     Last Name:
