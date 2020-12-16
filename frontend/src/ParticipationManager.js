@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import AddParticipant from './AddParticipant';
-import OrderComponent from './LiftingState';
+//import OrderComponent from './LiftingState';
 import ParticipantLog from './ParticipantLog';
 
 
@@ -14,7 +14,7 @@ class ParticipationManager extends React.Component {
             firstName: '',
             lastName: '',
             hours: 0,
-            users : [],
+            //users : [],
             counter : 0
             //madeRequest: false
         }
