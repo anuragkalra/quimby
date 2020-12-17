@@ -16,12 +16,6 @@ function App() {
       <section>
         <ParticipationManager />
       </section>
-      <section>
-        {/* <ChartsTester /> */}
-      </section>
-      <section>
-        {/* <RecordsTester /> */}
-      </section>
     </div>
   );
 }

@@ -52,7 +52,6 @@ class ParticipantLog extends React.Component {
                 color: colors[i]
             })
         )
-        console.log(data)
 
         let totalHours = 0;
         let sumData = []
@@ -66,8 +65,6 @@ class ParticipantLog extends React.Component {
             )
             totalHours += parseInt(this.state.usersSum[i].hours)
         }
-        console.log(this.state.usersSum)
-        console.log("totalHours", totalHours)
 
         return (
             <div>
@@ -79,25 +76,12 @@ class ParticipantLog extends React.Component {
                     }
                     data={sumData}
                 />
-
-                {/* <h2>Old Pie Chart</h2>
-                <PieChart style={{height:"200px", fontSize:"50%"}}
-                    label={
-                        ({ dataEntry }) => dataEntry.title
-                    }
-                    data={data}
-                /> */}
                 <h2>Participants</h2>
                 <ul className="Participants">
                     {sumData.map((e, i) => <li style={{backgroundColor:colors[i]}}>{e.title} Hours: {e.value} </li>)}
                 </ul>
                 <div>
                 <h2>Transactions</h2>
-                {/* {this.state.users.map(u =>
-                     <div key={u.id}>{u.first_name} {u.last_name} {u.hours}
-                      <button onClick={(e) => this.handleDelete(u.id, e)}>X</button>
-                     </div>
-                )} */}
                 <table>
                     <tr>
                         <th>First Name</th>
