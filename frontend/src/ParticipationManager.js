@@ -54,6 +54,7 @@ class ParticipationManager extends React.Component {
             hours: 0,
             counter: this.state.counter + 1
         })
+        window.location.reload();
     }
 
     render() {

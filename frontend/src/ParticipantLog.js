@@ -1,3 +1,4 @@
+import './ParticipantLog.sass'
 import React from 'react';
 import { PieChart } from 'react-minimal-pie-chart';
 
@@ -7,6 +8,7 @@ class ParticipantLog extends React.Component {
         this.state = {
             dummy : 0,
             users : [],
+            usersSum : []
         }
     }
 
@@ -14,6 +16,10 @@ class ParticipantLog extends React.Component {
         fetch('http://localhost:9000/participants')
         .then(res => res.json())
         .then(users => this.setState({ users }));
+
+        fetch('http://localhost:9000/participantSums')
+        .then(res => res.json())
+        .then(usersSum => this.setState({usersSum}))
     }
 
     componentDidUpdate(prevProps) {
@@ -33,15 +39,12 @@ class ParticipantLog extends React.Component {
         fetch(url, {
             method : 'DELETE'
         })
-        // this.setState({
-        //     dummy : this.state.dummy + 1
-        // })
         window.location.reload();
     }
 
     render() {
         let data = []
-        let colors = ["#A0E7E5", "#B4F8C8", "#AC19DD", "#98DE6C", "#AA42CF", "28C4DF"]
+        let colors = ["#A0E7E5", "#B4F8C8", "#AC19DD", "#98DE6C", "#BB88C0", "AAC8DF", "#ABCDEF"]
         this.state.users.forEach((e, i) => data.push(
             {
                 title: e.first_name,
@@ -50,16 +53,41 @@ class ParticipantLog extends React.Component {
             })
         )
         console.log(data)
+
+        let sumData = []
+        for (let i = 0; i < this.state.usersSum.length; i++) {
+            sumData.push(
+                {
+                    title : this.state.usersSum[i].first_name + ' ' + this.state.usersSum[i].last_name,
+                    value: parseInt(this.state.usersSum[i].hours),
+                    color: colors[i]
+                }
+            )
+        }
+        console.log(this.state.usersSum)
+
         return (
             <div>
                 <h1>Participant Log</h1>
-                <h2>Summary</h2>
+                <h2>New Pie Chart</h2>
+                <PieChart style={{height:"200px", fontSize:"50%"}}
+                    label={
+                        ({ dataEntry }) => `${Math.round(dataEntry.percentage)} %`
+                    }
+                    data={sumData}
+                />
+
+                {/* <h2>Old Pie Chart</h2>
                 <PieChart style={{height:"200px", fontSize:"50%"}}
                     label={
                         ({ dataEntry }) => dataEntry.title
                     }
                     data={data}
-                />
+                /> */}
+                <h2>Participants</h2>
+                <ul className="Participants">
+                    {sumData.map((e, i) => <li style={{backgroundColor:colors[i]}}>{e.title} {e.value} </li>)}
+                </ul>
                 <div>
                 <h2>Transactions</h2>
                 {this.state.users.map(u =>

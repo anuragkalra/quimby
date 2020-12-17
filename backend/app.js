@@ -30,6 +30,15 @@ const getParticipants = (request, response) => {
   })
 }
 
+const getParticipantSums = (request, response) => {
+  pool.query('SELECT UPPER(first_name) as first_name, UPPER(last_name) as last_name, SUM(hours) as hours FROM participants GROUP BY UPPER(first_name), UPPER(last_name)', (error, results) => {
+    if (error) {
+      throw error
+    }
+    response.status(200).json(results.rows)
+  })
+}
+
 //POST /participants
 const addParticipant = (request, response) => {
   //const {first_name, last_name, hours} = request.body
@@ -68,6 +77,11 @@ app
   .post(addParticipant)
   //DELETE
   .delete(deleteParticipant)
+
+app
+  .route('/participantSums')
+  //GET
+  .get(getParticipantSums)
 
 
 // catch 404 and forward to error handler
