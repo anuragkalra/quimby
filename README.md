@@ -12,6 +12,8 @@
 
 `$(enter password and postgres prompt will appear)`
 
+`\c postgres`
+
 	$postgres=#
 	CREATE TABLE participants (
 	ID SERIAL PRIMARY KEY,

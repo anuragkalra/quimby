@@ -73,7 +73,7 @@ class ParticipantLog extends React.Component {
         return (
             <div>
                 <h1>Participant Log</h1>
-                <h2>New Pie Chart</h2>
+                <h2>Chart</h2>
                 <PieChart style={{height:"200px", fontSize:"50%"}}
                     label={
                         ({ dataEntry }) => `${Math.round(dataEntry.percentage)} %`
