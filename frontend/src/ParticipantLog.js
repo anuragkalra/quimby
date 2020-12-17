@@ -54,6 +54,7 @@ class ParticipantLog extends React.Component {
         )
         console.log(data)
 
+        let totalHours = 0;
         let sumData = []
         for (let i = 0; i < this.state.usersSum.length; i++) {
             sumData.push(
@@ -63,8 +64,10 @@ class ParticipantLog extends React.Component {
                     color: colors[i]
                 }
             )
+            totalHours += parseInt(this.state.usersSum[i].hours)
         }
         console.log(this.state.usersSum)
+        console.log("totalHours", totalHours)
 
         return (
             <div>
@@ -86,15 +89,33 @@ class ParticipantLog extends React.Component {
                 /> */}
                 <h2>Participants</h2>
                 <ul className="Participants">
-                    {sumData.map((e, i) => <li style={{backgroundColor:colors[i]}}>{e.title} {e.value} </li>)}
+                    {sumData.map((e, i) => <li style={{backgroundColor:colors[i]}}>{e.title} Hours: {e.value} </li>)}
                 </ul>
                 <div>
                 <h2>Transactions</h2>
-                {this.state.users.map(u =>
+                {/* {this.state.users.map(u =>
                      <div key={u.id}>{u.first_name} {u.last_name} {u.hours}
                       <button onClick={(e) => this.handleDelete(u.id, e)}>X</button>
                      </div>
-                )}
+                )} */}
+                <table>
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Hours</th>
+                        <th>Participation</th>
+                        <th>Delete</th>
+                    </tr>
+                    {this.state.users.map(u =>
+                    <tr>
+                        <td>{u.first_name}</td>
+                        <td>{u.last_name}</td>
+                        <td>{u.hours}</td>
+                        <td>{Math.round(100 * u.hours/totalHours) + "%"}</td>
+                        <td><button onClick={(e) => this.handleDelete(u.id, e)}>X</button></td>
+                    </tr>
+                    )}
+                </table>
                 </div>
             </div>
         );

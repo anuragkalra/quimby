@@ -76,18 +76,21 @@ class AddParticipant extends React.Component {
             <div>
                 <h1>Add Participant</h1>
                 <form onSubmit={this.handleSubmit}>
-                    <label>
+                    
+                    {/* Added nowrap styles for viewing on mobile */}
+                    <label style={{whiteSpace:"nowrap"}}>
                     First Name:
                         <input type="text" value={this.props.firstName} onChange={this.handleFirstNameChange} />
                     </label>
-                    <label>
+                    <label style={{whiteSpace:"nowrap"}}>
                     Last Name:
                         <input type="text" value={this.props.lastName} onChange={this.handleLastNameChange}/>
                     </label>
-                    <label>
+                    <label style={{whiteSpace:"nowrap"}}>
                     Hours:
                         <input type="text" value={this.props.hours} onChange={this.handleHoursChange}/>    
                     </label>
+                    <br />
                     <button type="submit" onClick={this.handleSubmit}>Submit</button>
                 </form>
             </div>
