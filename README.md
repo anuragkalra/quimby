@@ -29,7 +29,7 @@
   
 
 ### Start Express server:
-In a separate terminal window:
+#### n a separate terminal window:
 `$cd backend`
 
 `$npm install`
@@ -37,7 +37,7 @@ In a separate terminal window:
 `$yarn start`
 
 ### Start React Frontend
-In a separate terminal window:
+#### In a separate terminal window:
 `$cd frontend`
 
 `$npm install`
