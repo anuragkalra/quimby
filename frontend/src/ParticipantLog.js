@@ -44,12 +44,16 @@ class ParticipantLog extends React.Component {
 
     render() {
         let data = []
-        let colors = ["#A0E7E5", "#B4F8C8", "#AC19DD", "#98DE6C", "#BB88C0", "AAC8DF", "#ABCDEF"]
+        //Limited to this set of colors currently
+        let colors = [
+            "#A0E7E5", "#B4F8C8", "#AC19DD", "#98DE6C", "#BB88C0", "#AAC8DF", "#ABCDEF", "#AB0624", "#B74ADA", "#776426", "#37AB5B"
+        ]
+
         this.state.users.forEach((e, i) => data.push(
             {
                 title: e.first_name,
                 value: parseInt(e.hours),
-                color: colors[i]
+                color: colors[i%colors.length]
             })
         )
 
@@ -60,7 +64,7 @@ class ParticipantLog extends React.Component {
                 {
                     title : this.state.usersSum[i].first_name + ' ' + this.state.usersSum[i].last_name,
                     value: parseInt(this.state.usersSum[i].hours),
-                    color: colors[i]
+                    color: colors[i%colors.length]
                 }
             )
             totalHours += parseInt(this.state.usersSum[i].hours)
@@ -78,7 +82,7 @@ class ParticipantLog extends React.Component {
                 />
                 <h2>Participants</h2>
                 <ul className="Participants">
-                    {sumData.map((e, i) => <li style={{backgroundColor:colors[i]}}>{e.title} Hours: {e.value} </li>)}
+                    {sumData.map((e, i) => <li style={{backgroundColor:colors[i%colors.length]}}>{e.title} Hours: {e.value} </li>)}
                 </ul>
                 <div>
                 <h2>Transactions</h2>

@@ -1,19 +1,10 @@
 {
 	"folders": [
 		{
-			"path": "../../../frontend-workspace/tulip"
+			"path": ".."
 		},
 		{
-			"path": "../../../backend-workspace/docker-testing/safekeep-fullstack-interview"
-		},
-		{
-			"path": "../../../backend-workspace/api"
-		},
-		{
-			"path": "../../../backend-workspace/postgres-testing"
-		},
-		{
-			"path": "../.."
+			"path": "../../../BACKUP"
 		}
 	]
 }

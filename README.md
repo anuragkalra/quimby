@@ -9,6 +9,7 @@
 #### Create table using psql
 #### Requires psql be installed.
 `$psql postgres -h localhost -U trust_our_leader`
+
 `$(enter password and postgres prompt will appear)`
 
 	$postgres=#
