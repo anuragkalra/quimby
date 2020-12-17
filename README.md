@@ -30,15 +30,18 @@
 
 ### Start Express server:
 In a separate terminal window:
-
 `$cd backend`
+
 `$npm install`
+
 `$yarn start`
 
 ### Start React Frontend
 In a separate terminal window:
 `$cd frontend`
+
 `$npm install`
+
 `$yarn start`
 
 ## View in browser at http://localhost:3000/
